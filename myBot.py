@@ -1,8 +1,13 @@
 import discord
-from discord.ext import commands 
+from discord.ext import commands
+from dotenv import load_dotenv  # Pour charger les variables d'environnement
+import os                      # Pour accéder aux variables d'environnement
 
-# token 
-TOKEN = #tbd
+# Charger les variables depuis le fichier .env
+load_dotenv()
+
+# Récupérer le token
+TOKEN = os.getenv('TOKEN')
 
 # intents
 intents = discord.Intents.default()
@@ -24,7 +29,7 @@ async def on_message(message):
 
     # Check if mentionned
     if bot.user in message.mentions:
-        await message.channel.send("réel")
+        await message.channel.send("Réel")
 
     
     await bot.process_commands(message)
